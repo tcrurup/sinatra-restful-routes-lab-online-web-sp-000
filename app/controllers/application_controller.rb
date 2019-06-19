@@ -27,5 +27,14 @@ class ApplicationController < Sinatra::Base
     recipe = Recipe.create(params)
     redirect "/recipes/#{recipe.id}"
   end
+  
+  patch '/recipes/:id' do
+    recipe = Recipe.find(params[:id])
+    recipe.name = params[:name]
+    recipe.cook_time = params[:cook_time]
+    recipe.ingredients = params[:ingredients]
+    recipe.save
+    
+  end
 
 end
